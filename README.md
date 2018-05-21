@@ -94,7 +94,29 @@ Apart from the validation scripts, we also provide you several pre-trained model
 2. ResNet with 4 residual blocks, function: ```resnet_12_64```, pre-trained model: ```models_pretrained/dped_resnet_12_64```
 3. ResNet with 2 residual blocks, function: ```resnet_8_32```, pre-trained model: ```models_pretrained/dped_resnet_8_32```</br></br>
 
-#### 5. Other remarks
+#### 5. Team registration and model submission
+
+To register your team, send an email to <b>```ai.mobile.challenge@gmail.com```</b> with the following information:
+
+```bash
+Email Subject:  AI Mobile Challenge Registration
+
+Email Text:     Team Name
+                Team Member 1 (Name, Surname, Affiliation)
+                Team Member 2 (Name, Surname, Affiliation)
+                ....
+```
+
+To validate your model, send an email indicating the ```track```, ```team id``` and the corresponding ```model.pb``` file:
+
+```bash
+Email Subject:  [Track X] [Team ID] [Team Name] Submission
+
+Email Text:     Link to model.pb file
+```
+You are allowed to send up to ```2 submissions per day``` for each track. The leaderboard will show the results of your last successful submission. Please make sure that the results provided by our validation scripts are meaningful before sending your submission files.</br></br>
+
+#### 6. Other remarks
 
 - Note that the provided code is used only for preliminary model validation, while all final numbers will be obtained by us by testing all submissions on the test parts of the datasets (accuracy) and on the same hardware (speed)
 
