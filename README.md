@@ -116,7 +116,29 @@ Email Text:     Link to model.pb file
 ```
 You are allowed to send up to ```2 submissions per day``` for each track. The leaderboard will show the results of your last successful submission. Please make sure that the results provided by our validation scripts are meaningful before sending your submission files.</br></br>
 
-#### 6. Other remarks
+
+#### 6. Scoring formulas
+
+The performance of your solution will be assessed based on three metrics: its speed compared to a baseline network, its fidelity score measured by PSNR, and its perceptual score computed based on MS-SSIM metric. Since PSNR and SSIM scores do not always objectively reflect image quality, during the test phase we will conduct a user study where your final submissions will be evaluated by a large number of people, and the resulting MOS Scores will replace MS-SSIM results. The total score of your solution will be calculated as a weighted average of the previous scores:
+
+```bash
+TotalScore = α * (PSNR_solution - PSNR_baseline) + β * (SSIM_solution - SSIM_baseline) + γ * (Time_baseline / Time_solution) 
+```
+
+We will use three different validation tracks for evaluating your results. Score A is giving preference to solution with the highest fidelity (PSNR) score, score B is aimed at the solution providing the best visual results (MS-SSIM/MOS scores), and score C is targeted at the best balance between the speed and perceptual/quantitative performance. For each track, we will use the above scoring formula but with different coefficients:
+
+<b>Track A (Super-Resolution):</b>
+
+- ```PSNR_baseline``` = 26.5, ```SSIM_baseline``` = 0.94
+- (```α```, ```β```, ```γ```): &nbsp; score A - (4, 100, 1); &nbsp; score B - (1, 400, 1); &nbsp; score C - (2, 200, 1.5)
+
+<b>Track B (Image Enhancement):</b>
+
+- ```PSNR_baseline``` = 21, ```SSIM_baseline``` = 0.9
+- (```α```, ```β```, ```γ```): &nbsp; score A - (4, 100, 2); &nbsp; score B - (1, 400, 2); &nbsp; score C - (2, 200, 2.9)</br></br>
+
+
+#### 7. Other remarks
 
 - Note that the provided code is used only for preliminary model validation, while all final numbers will be obtained by us by testing all submissions on the test parts of the datasets (accuracy) and on the same hardware (speed)
 
