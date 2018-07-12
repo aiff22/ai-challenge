@@ -97,8 +97,8 @@ if __name__ == "__main__":
                 image_bicubic = misc.imresize(image, 0.25, interp="bicubic")
                 image_bicubic = misc.imresize(image_bicubic, 4.0, interp="bicubic")
 
-                image_bicubic = np.reshape(image_bicubic, [1, image_bicubic.shape[0], image_bicubic.shape[1], 3]) / 255
-                image_target = np.reshape(image, [1, image.shape[0], image.shape[1], 3]) / 255
+                image_bicubic = np.float32(np.reshape(image_bicubic, [1, image_bicubic.shape[0], image_bicubic.shape[1], 3])) / 255
+                image_target = np.float32(np.reshape(image, [1, image.shape[0], image.shape[1], 3])) / 255
 
                 h = image.shape[0] - 32
                 w = image.shape[1] - 32
