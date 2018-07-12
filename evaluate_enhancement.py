@@ -90,8 +90,8 @@ if __name__ == "__main__":
                 image_phone = misc.imread("dped/patches/iphone/" + validation_images[j])
                 image_dslr = misc.imread("dped/patches/canon/" + validation_images[j])
 
-                image_phone = np.reshape(image_phone, [1, image_phone.shape[0], image_phone.shape[1], 3]) / 255
-                image_dslr = np.reshape(image_dslr, [1, image_dslr.shape[0], image_dslr.shape[1], 3]) / 255
+                image_phone = np.float32(np.reshape(image_phone, [1, image_phone.shape[0], image_phone.shape[1], 3])) / 255
+                image_dslr = np.float32(np.reshape(image_dslr, [1, image_dslr.shape[0], image_dslr.shape[1], 3])) / 255
 
                 [psnr, enhanced] = sess.run([psnr_, out_], feed_dict={x_: image_phone, y_: image_dslr})
 
