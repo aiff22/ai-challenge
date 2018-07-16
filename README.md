@@ -122,7 +122,7 @@ You are allowed to send up to ```2 submissions per day``` for each track. The le
 The performance of your solution will be assessed based on three metrics: its speed compared to a baseline network, its fidelity score measured by PSNR, and its perceptual score computed based on MS-SSIM metric. Since PSNR and SSIM scores do not always objectively reflect image quality, during the test phase we will conduct a user study where your final submissions will be evaluated by a large number of people, and the resulting MOS Scores will replace MS-SSIM results. The total score of your solution will be calculated as a weighted average of the previous scores:
 
 ```bash
-TotalScore = α * (PSNR_solution - PSNR_baseline) + β * (SSIM_solution - SSIM_baseline) + γ * (Time_baseline / Time_solution) 
+TotalScore = α * (PSNR_solution - PSNR_baseline) + β * (SSIM_solution - SSIM_baseline) + γ * min(Time_baseline / Time_solution, 4) 
 ```
 
 We will use three different validation tracks for evaluating your results. Score A is giving preference to solution with the highest fidelity (PSNR) score, score B is aimed at the solution providing the best visual results (MS-SSIM/MOS scores), and score C is targeted at the best balance between the speed and perceptual/quantitative performance. For each track, we will use the above scoring formula but with different coefficients:
