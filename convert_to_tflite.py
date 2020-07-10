@@ -33,24 +33,24 @@ with tf.compat.v1.Session() as sess:
     # ------------------------------------------------------------------
     x_ = tf.compat.v1.placeholder(tf.float32, [1, 1024, 1536, 3], name="input")
 
-    # Perform your image preprocessing (e.g., normalization, scaling, etc.)
+    # Perform image preprocessing (e.g., normalization, scaling, etc.)
     x_norm = x_ / 255.0
 
     # Process the image with a sample SRCNN model
     processed = SRCNN(x_norm)
 
-    # Scale your processed image so that its values lie in the interval [0, 255]
+    # Scale the processed image so that its values lie in the interval [0, 255]
     output_ = tf.identity(processed * 255, name="output")
 
-    # Loading your pre-trained model
+    # Load your pre-trained model
     # saver = tf.compat.v1.train.Saver()
     # saver.restore(sess, "path/to/your/saved/model")
 
-    # In this example, we are just initializing it with some random values
+    # In this example, we just initialize it with some random values
     sess.run(tf.compat.v1.global_variables_initializer())
 
     # Export your model to the TFLite format
-    # Note that the experimental_new_converter is enabled by default in TensorFlow 2.2+
+    # Note that the "experimental_new_converter" flag is enabled by default in TensorFlow 2.2+
 
     converter = tf.compat.v1.lite.TFLiteConverter.from_session(sess, [x_], [output_])
     converter.experimental_new_converter = True
@@ -58,8 +58,10 @@ with tf.compat.v1.Session() as sess:
     tflite_model = converter.convert()
     open("model.tflite", "wb").write(tflite_model)
 
-    # That is it! Your model is now saved as model.tflite
+    # That is it! Your model is now saved as model.tflite file
     # You can now try to run it using the PRO mode of the AI Benchmark application:
     # https://play.google.com/store/apps/details?id=org.benchmark.demo
+    # More details can be found here (Running Custom TensorFlow Lite Models):
+    # http://ai-benchmark.com/news_2020_05_31_may_release.html
     # -----------------------------------------------------------------------------
 
